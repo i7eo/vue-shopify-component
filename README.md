@@ -10,7 +10,7 @@ Learn and rewrite parts of Shopify code based on my own business logic
 
 ### The original
 1. Shopify is powerful, but most of the themes are currently written in JQ, and some of the themes using React/Vue /ng are also compiled code that is hard to understand.
-2. Combined with its own business scenarios, this paper mainly rewrites Shopify product detail page multi-attribute combination switch and Shopify address switch.
+2. Combined with its own business scenarios, this paper mainly rewrites Shopify product detail page multi-attribute combination switch and Shopify address select.
 
 ### Technology
 zepto & vue2.6
