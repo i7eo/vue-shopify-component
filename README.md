@@ -1,16 +1,34 @@
-### shopifyPartials
-结合业务重写shopify部分代码
+# ShopifyPartials
 
-### 初衷
-shopify很强大，但是大部分主题目前还是使用jq编写，部分主题使用 react/vue/ng 也是编译后的代码，很晦涩难懂。
-结合自身的业务场景，主要对shopify产品详情页多属性组合切换以及shopify的地址切换进行了重写
+## :large_blue_circle: Internationalization
 
-### 使用技术
+English | [中文文档](README_zh.md)
+
+## :information_source: Introductions
+
+Learn and rewrite parts of Shopify code based on my own business logic
+
+### The original
+1. Shopify is powerful, but most of the themes are currently written in JQ, and some of the themes using React/Vue /ng are also compiled code that is hard to understand.
+2. Combined with its own business scenarios, this paper mainly rewrites Shopify product detail page multi-attribute combination switch and Shopify address switch.
+
+### Technology
 zepto & vue2.6
 
-### 2021.02.19 更新
-checkout 个人信息填写页面，国家数据来源于 shopify
+### 2021.02.19 update
+Shopify address page, country data from Shopify
 
-    难点：
-        1. 以国家切换为入口，刷新整体的 ui。这里需要提前定义好 ui 布局，详情参见 checkout/checkout-countries.new.js 中的 ADDRESS_FORMAT 对象
-        2. 表单项的 label 的上浮动画需要加上 `transform: translateY(2px);` 
+tips：
+1. With the country switch as the entry point, refresh the overall UI. The UI layout needs to be defined in advance, as described in the `ADDRESS_FORMAT` in `/checkout/checkout-countries.new.js`
+2. The float animation for the Label of the form item needs to be added `transform: translateY(2px);` 
+
+## :stuck_out_tongue_winking_eye: Authors
+
+[i7eo](https://i7eo.com/about/)
+
+## :copyright: License
+
+[License MIT](LICENSE)
+
+
+
