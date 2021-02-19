@@ -1,0 +1,2131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopify checkout address select</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" media="none" onload="if(media!='all')media='all'">
+    <style>
+    /* Document
+    ========================================================================== */
+    /**
+    * 1. Correct the line height in all browsers.
+    * 2. Prevent adjustments of font size after orientation changes in iOS.
+    */
+    html {
+        font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #222222;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-text-size-adjust: 100%;
+        -moz-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+        text-rendering: optimizeLegibility;
+    }
+
+    html,
+    body {
+        height: 100%;
+        -webkit-overflow-scrolling: touch;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* Sections
+        ========================================================================== */
+    /**
+    * Remove the margin in all browsers.
+    */
+    * {
+        padding: 0;
+        margin: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 1;
+    }
+
+    /**
+    * Render the `main` element consistently in IE.
+    */
+    main {
+        display: block;
+    }
+
+    /**
+    * Correct the font size and margin on `h1` elements within `section` and
+    * `article` contexts in Chrome, Firefox, and Safari.
+    */
+    h1 {
+        font-size: 2em;
+        margin: 0.67em 0;
+    }
+
+    /* Grouping content
+        ========================================================================== */
+    /**
+    * 1. Add the correct box sizing in Firefox.
+    * 2. Show the overflow in Edge and IE.
+    */
+    hr {
+        -webkit-box-sizing: content-box;
+        box-sizing: content-box;
+    /* 1 */
+        height: 0;
+    /* 1 */
+        overflow: visible;
+    /* 2 */
+    }
+
+    /**
+    * 1. Correct the inheritance and scaling of font size in all browsers.
+    * 2. Correct the odd `em` font sizing in all browsers.
+    */
+    pre {
+        font-family: monospace, monospace;
+    /* 1 */
+        font-size: 1em;
+    /* 2 */
+    }
+
+    /* Text-level semantics
+        ========================================================================== */
+    /**
+    * Remove the gray background on active links in IE 10.
+    */
+    a {
+        background-color: transparent;
+        -webkit-text-decoration-skip: objects;
+        color: #222222;
+        text-decoration: none;
+    }
+
+    a:active,
+    a:hover {
+        outline-width: 0;
+        text-decoration: none;
+    }
+
+    /**
+    * list style
+    */
+    ol,
+    ul,
+    dd {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    li > ol,
+    li > ul {
+        margin-bottom: 0;
+    }
+
+    hr {
+        -webkit-box-sizing: content-box;
+        box-sizing: content-box;
+        height: 0;
+        overflow: visible;
+    }
+
+    /**
+    * 1. Remove the bottom border in Chrome 57-
+    * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+    */
+    abbr[title] {
+        border-bottom: none;
+    /* 1 */
+        text-decoration: underline;
+    /* 2 */
+        -webkit-text-decoration: underline dotted;
+        text-decoration: underline dotted;
+    /* 2 */
+    }
+
+    /**
+    * Add the correct font weight in Chrome, Edge, and Safari.
+    */
+    b,
+    strong {
+        font-weight: bolder;
+    }
+
+    /**
+    * 1. Correct the inheritance and scaling of font size in all browsers.
+    * 2. Correct the odd `em` font sizing in all browsers.
+    */
+    code,
+    kbd,
+    samp {
+        font-family: monospace, monospace;
+    /* 1 */
+        font-size: 1em;
+    /* 2 */
+    }
+
+    /**
+    * Add the correct font size in all browsers.
+    */
+    small {
+        font-size: 80%;
+    }
+
+    /**
+    * Prevent `sub` and `sup` elements from affecting the line height in
+    * all browsers.
+    */
+    sub,
+    sup {
+        font-size: 75%;
+        line-height: 0;
+        position: relative;
+        vertical-align: baseline;
+    }
+
+    sub {
+        bottom: -0.25em;
+    }
+
+    sup {
+        top: -0.5em;
+    }
+
+    /* Embedded content
+        ========================================================================== */
+    /**
+    * Remove the border on images inside links in IE 10.
+    */
+    img {
+        border-style: none;
+        max-width: 100%;
+        vertical-align: middle;
+    }
+
+    /* Forms
+        ========================================================================== */
+    /**
+    * 1. Change the font styles in all browsers.
+    * 2. Remove the margin in Firefox and Safari.
+    */
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+        font-family: inherit;
+    /* 1 */
+        font-size: 100%;
+    /* 1 */
+        line-height: 1.15;
+    /* 1 */
+        margin: 0;
+    /* 2 */
+    }
+
+    /**
+    * Show the overflow in IE.
+    * 1. Show the overflow in Edge.
+    */
+    button,
+    input {
+    /* 1 */
+        overflow: visible;
+    }
+
+    /**
+    * Remove the inheritance of text transform in Edge, Firefox, and IE.
+    * 1. Remove the inheritance of text transform in Firefox.
+    */
+    button,
+    select {
+    /* 1 */
+        text-transform: none;
+    }
+
+    /**
+    * Correct the inability to style clickable types in iOS and Safari.
+    */
+    button,
+    [type='button'],
+    [type='reset'],
+    [type='submit'] {
+        -webkit-appearance: button;
+    }
+
+    /**
+    * Remove the inner border and padding in Firefox.
+    */
+    button::-moz-focus-inner,
+    [type='button']::-moz-focus-inner,
+    [type='reset']::-moz-focus-inner,
+    [type='submit']::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+    }
+
+    /**
+    * Restore the focus styles unset by the previous rule.
+    */
+    button:-moz-focusring,
+    [type='button']:-moz-focusring,
+    [type='reset']:-moz-focusring,
+    [type='submit']:-moz-focusring {
+        outline: 1px dotted ButtonText;
+    }
+
+    /**
+    * Correct the padding in Firefox.
+    */
+    fieldset {
+        margin: 0 2px;
+        padding: 0.35em 0.75em 0.625em;
+        min-width: 0;
+        border: 0;
+    }
+
+    /**
+    * 1. Correct the text wrapping in Edge and IE.
+    * 2. Correct the color inheritance from `fieldset` elements in IE.
+    * 3. Remove the padding so developers are not caught out when they zero out
+    *    `fieldset` elements in all browsers.
+    */
+    legend {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    /* 1 */
+        color: inherit;
+    /* 2 */
+        display: table;
+    /* 1 */
+        max-width: 100%;
+    /* 1 */
+        padding: 0;
+    /* 3 */
+        white-space: normal;
+    /* 1 */
+    }
+
+    /**
+    * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+    */
+    progress {
+        vertical-align: baseline;
+    }
+
+    /**
+    * Remove the default vertical scrollbar in IE 10+.
+    */
+    textarea {
+        overflow: auto;
+    }
+
+    /**
+    * 1. Add the correct box sizing in IE 10.
+    * 2. Remove the padding in IE 10.
+    */
+    [type='checkbox'],
+    [type='radio'] {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    /* 1 */
+        padding: 0;
+    /* 2 */
+    }
+
+    /**
+    * Correct the cursor style of increment and decrement buttons in Chrome.
+    */
+    [type='number']::-webkit-inner-spin-button,
+    [type='number']::-webkit-outer-spin-button {
+        height: auto;
+    }
+
+    /**
+    * 1. Correct the odd appearance in Chrome and Safari.
+    * 2. Correct the outline style in Safari.
+    */
+    [type='search'] {
+        -webkit-appearance: textfield;
+    /* 1 */
+        outline-offset: -2px;
+    /* 2 */
+    }
+
+    /**
+    * Remove the inner padding in Chrome and Safari on macOS.
+    */
+    [type='search']::-webkit-search-decoration {
+        -webkit-appearance: none;
+    }
+
+    /**
+    * 1. Correct the inability to style clickable types in iOS and Safari.
+    * 2. Change font properties to `inherit` in Safari.
+    */
+    ::-webkit-file-upload-button {
+        -webkit-appearance: button;
+    /* 1 */
+        font: inherit;
+    /* 2 */
+    }
+
+    /* Interactive
+        ========================================================================== */
+    /*
+    * Add the correct display in Edge, IE 10+, and Firefox.
+    */
+    details {
+        display: block;
+    }
+
+    /*
+    * Add the correct display in all browsers.
+    */
+    summary {
+        display: list-item;
+    }
+
+    /* Misc
+        ========================================================================== */
+    /**
+    * Add the correct display in IE 10+.
+    */
+    template {
+        display: none;
+    }
+
+    /**
+    * Add the correct display in IE 10.
+    */
+    [hidden] {
+        display: none;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    .icon-svg {
+        display: inline-block;
+        vertical-align: middle;
+        fill: currentColor;
+        width: 20px;
+        height: 20px;
+    }
+
+    .icon-svg--center {
+        position: absolute;
+        left: 50%;
+        right: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .icon-svg--size12 {
+        width: 12px;
+        height: 12px;
+    }
+
+    .icon-svg--size16 {
+        width: 16px;
+        height: 16px;
+    }
+
+    .icon-svg--size24 {
+        width: 24px;
+        height: 24px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #222222;
+    }
+
+    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+        display: block;
+        font-family: inherit;
+        font-weight: 700;
+        font-style: normal;
+        line-height: 1.4;
+        text-rendering: optimizeLegibility;
+    }
+
+    h1:not(.broswer-default), .h1:not(.broswer-default), h2:not(.broswer-default), .h2:not(.broswer-default), h3:not(.broswer-default), .h3:not(.broswer-default), h4:not(.broswer-default), .h4:not(.broswer-default), h5:not(.broswer-default), .h5:not(.broswer-default), h6:not(.broswer-default), .h6:not(.broswer-default) {
+        color: #321863; 
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    body::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    body::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-color: #e0e0e0;
+    }
+
+    body::-webkit-scrollbar-track {
+        border-radius: 5px;
+        background-color: #f7f8fa;
+    }
+
+    [v-cloak] {
+        display: none;
+    }
+
+    .page-container,
+    .header .container {
+        -webkit-transition: all 0.35s cubic-bezier(0.46, 0.01, 0.32, 1);
+        -o-transition: all 0.35s cubic-bezier(0.46, 0.01, 0.32, 1);
+        transition: all 0.35s cubic-bezier(0.46, 0.01, 0.32, 1);
+    }
+
+    .container {
+        margin: 0 auto;
+        max-width: 1250px;
+        padding: 0 15px;
+    }
+
+
+    .row {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .row:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+    .row .col {
+        float: left;
+        box-sizing: border-box;
+        padding: 0 0.75rem;
+        min-height: 1px;
+    }
+
+    .row .col.m1 {
+        width: 8.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
+
+    .row .col.m2 {
+        width: 16.6666666667%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
+
+    .row .col.m3 {
+        width: 25%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
+
+    .row .col.m4 {
+        width: 33.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
+
+    .row .col.m5 {
+        width: 41.6666666667%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
+
+    .row .col.m6 {
+        width: 50%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
+
+    .row .col.m7 {
+        width: 58.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
+
+    .row .col.m8 {
+        width: 66.6666666667%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
+
+    .row .col.m9 {
+        width: 75%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
+
+    .row .col.m10 {
+        width: 83.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
+
+    .row .col.m11 {
+        width: 91.6666666667%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
+
+    .row .col.m12 {
+        width: 100%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
+
+    .emphasis, .small-text {
+        display: block;
+        text-align: left;
+        overflow: hidden;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .emphasis {
+        min-width: 100%;
+        font-size: 14px;
+        line-height: 1.6;
+        font-weight: 700;
+    }
+
+    .small-text {
+        font-size: 12px;
+        line-height: 1.6;
+        font-weight: 400;
+        color: rgba(34, 34, 34, 0.5);
+    }
+
+    label {
+        font-weight: 400;
+    }
+
+    label[for] {
+        cursor: pointer;
+    }
+
+    button, input, optgroup, select, textarea {
+        color: inherit;
+        font: inherit;
+        margin: 0;
+        padding: 0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        -webkit-font-smoothing: inherit;
+        border: none;
+        background: transparent;
+        line-height: normal;
+        outline: none;
+        cursor: pointer;
+    }
+
+    input, select {
+        -webkit-transition: all 0.3s ease-out;
+        -o-transition: all 0.3s ease-out;
+        transition: all 0.3s ease-out;
+    }
+
+    input:focus, select:focus {
+        outline: none;
+        border-color: #321863;
+        -webkit-box-shadow: 0 0 0 1px #321863;
+        box-shadow: 0 0 0 1px #321863;
+    }
+
+    ::-webkit-input-placeholder, ::-moz-placeholder, ::-ms-input-placeholder {
+        font-size: 14px;
+        line-height: 1.6;
+        font-weight: 400;
+        color: rgba(34, 34, 34, 0.8);
+    }
+
+    .field {
+        -webkit-box-flex: 1;
+        -ms-flex: auto;
+        flex: auto;
+        padding: 5px;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    /* input
+        ============================================================================================= */
+    /* checkbox
+        ============================================================================================= */
+    /* checkbox
+        =========================================================================================== */
+    }
+
+    .field--label-floated .field__label {
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none;
+        opacity: 1;
+    }
+
+    .field--label-floated .field__input {
+        padding-top: 15px;
+        padding-bottom: 5px;
+    }
+
+    .field--error .field__input {
+        border-color: #f01130;
+        -webkit-box-shadow: 0 0 0 1px #f01130;
+        box-shadow: 0 0 0 1px #f01130;
+    }
+
+    .field--error .field__message--error {
+        display: block;
+    }
+
+    .field__input__extract {
+        width: 40px;
+        height: 100%;
+    }
+
+    .field__input__extract--right {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .field__input-wrapper {
+        position: relative;
+    }
+
+    .field__label {
+        display: block;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        padding: 0 10px;
+        margin: 2px 1px 0;
+        z-index: 1;
+        overflow: hidden;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: 12px;
+        line-height: 1.6;
+        font-weight: 400;
+        color: rgba(34, 34, 34, 0.8);
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        pointer-events: none;
+        white-space: nowrap;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        -webkit-transition: all 0.3s ease-out;
+        -o-transition: all 0.3s ease-out;
+        transition: all 0.3s ease-out;
+        -webkit-transform: translateY(2px);
+        -ms-transform: translateY(2px);
+        transform: translateY(2px);
+        opacity: 0;
+    }
+
+    .field__input {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border: 1px rgba(34, 34, 34, 0.2) solid;
+        background-clip: padding-box;
+        border-radius: 5px;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        word-break: normal;
+        line-height: inherit;
+        background-color: white;
+        color: #222222;
+    }
+
+    .field__arrow-down {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        width: 30px;
+        height: 43%;
+        -webkit-transform: translate(0%, -50%);
+        -ms-transform: translate(0%, -50%);
+        transform: translate(0%, -50%);
+        pointer-events: none;
+        border-left: 1px rgba(34, 34, 34, 0.2) solid;
+    }
+
+    .field__message {
+        margin: 6px 0 0;
+        font-size: 14px;
+        line-height: 1.6;
+        font-weight: 400;
+    }
+
+    .field__message--error {
+        display: none;
+        color: #f01130;
+    }
+
+    .field__checkbox {
+        display: table;
+        width: 100%;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        zoom: 1;
+    }
+
+    .field__checkbox:last-child {
+        margin-bottom: 0;
+    }
+
+    .field__checkbox__label {
+        display: table-cell;
+        width: 100%;
+        cursor: pointer;
+        vertical-align: middle;
+        font-size: 14px;
+        line-height: 1.6;
+        font-weight: 400;
+        color: rgba(34, 34, 34, 0.8);
+    }
+
+    .field__checkbox__input {
+        position: relative;
+        width: 18px;
+        height: 18px;
+        border: 1px rgba(34, 34, 34, 0.2) solid;
+        cursor: pointer;
+        vertical-align: -4px;
+        border-radius: 4px;
+    }
+
+    .field__checkbox__input:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 10px;
+        height: 8px;
+        margin-left: -5px;
+        margin-top: -4px;
+        -webkit-transform: scale(0.2);
+        -ms-transform: scale(0.2);
+        transform: scale(0.2);
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        opacity: 0;
+        background-image: url(/static/default/images/checkout/checkbox-bg.png);
+        background-image: url(/static/default/images/checkout/checkbox-right.svg), none;
+    }
+
+    .field__checkbox__input:checked {
+        border-width: 9px;
+        border-color: #321863;
+    }
+
+    .field__checkbox__input:checked:after {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+        -webkit-transition-delay: 0.1s;
+        -o-transition-delay: 0.1s;
+        transition-delay: 0.1s;
+        opacity: 1;
+    }
+
+    .field__checkbox__input:checked:hover {
+        border-color: #321863;
+    }
+
+    .field__checkbox__input-wrapper {
+        display: table-cell;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    .field__radio {
+        display: table;
+        width: 100%;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        zoom: 1;
+    }
+
+    .field__radio:last-child {
+        margin-bottom: 0;
+    }
+
+    .field__radio__label {
+        display: table-cell;
+        width: 100%;
+        cursor: pointer;
+        vertical-align: middle;
+        font-size: 14px;
+        line-height: 1.6;
+        font-weight: 400;
+        color: rgba(34, 34, 34, 0.8);
+    }
+
+    .field__radio__input {
+        position: relative;
+        width: 18px;
+        height: 18px;
+        border: 1px rgba(34, 34, 34, 0.2) solid;
+        cursor: pointer;
+        vertical-align: -4px;
+        border-radius: 4px;
+        border-radius: 50%;
+    }
+
+    .field__radio__input:checked {
+        border-width: 7px;
+        border-color: #321863;
+    }
+
+    .field__radio__input:checked:hover {
+        border-color: #321863;
+    }
+
+    .field__radio__input-wrapper {
+        display: table-cell;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    /* btn
+    ============================================================================================= */
+    .btn {
+        display: inline-block;
+        padding: 8px 10px;
+        margin: 0;
+        width: auto;
+        font-style: normal;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 700;
+        text-decoration: none;
+        text-align: center;
+        vertical-align: middle;
+        white-space: normal;
+        border: 1px solid transparent;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        border-radius: 0;
+        background-color: #321863;
+        color: #fff;
+    }
+
+    .btn--active {
+        color: #321863 !important;
+    }
+
+    .btn--secondary {
+        min-width: 155px;
+        min-height: 44px;
+        padding: 12px 20px;
+        font-size: 14px;
+        line-height: 1.45;
+        font-weight: 700;
+        -webkit-transition: background-color 0.4s ease-out;
+        -o-transition: background-color 0.4s ease-out;
+        transition: background-color 0.4s ease-out;
+        -webkit-transition: opacity 0.4s ease-out;
+        -o-transition: opacity 0.4s ease-out;
+        transition: opacity 0.4s ease-out;
+    }
+
+    .btn--secondary:hover {
+        opacity: .8;
+        background-color: #321863;
+        text-decoration: none;
+    }
+
+    .btn--small {
+        min-width: 120px;
+        min-height: 44px;
+        padding: 6px 8px;
+        font-size: 12px;
+        line-height: 1.2;
+        font-weight: 700;
+        -webkit-transition: background-color 0.4s ease-out;
+        -o-transition: background-color 0.4s ease-out;
+        transition: background-color 0.4s ease-out;
+        -webkit-transition: opacity 0.4s ease-out;
+        -o-transition: opacity 0.4s ease-out;
+        transition: opacity 0.4s ease-out;
+    }
+
+    .btn--small:hover {
+        opacity: .8;
+        background-color: #321863;
+        text-decoration: none;
+    }
+
+    .btn--text {
+        display: inline-block;
+        position: relative;
+        min-width: auto;
+        padding: 0;
+        font-size: 12px;
+        line-height: 1.2;
+        font-weight: 700;
+        color: rgba(34, 34, 34, 0.5);
+        text-decoration: underline;
+        background: transparent;
+        cursor: pointer;
+        -webkit-transition: color 0.4s ease-out;
+        -o-transition: color 0.4s ease-out;
+        transition: color 0.4s ease-out;
+    }
+
+    .btn--text:hover {
+        color: rgba(34, 34, 34, 0.8);
+    }
+
+    .btn--text:disabled {
+        color: rgba(34, 34, 34, 0.2) !important;
+    }
+
+    .btn--a {
+        display: inline-block;
+        position: relative;
+        min-width: auto;
+        min-height: auto;
+        padding: 0;
+        font-size: 12px;
+        line-height: 1.2;
+        font-weight: 700;
+        color: rgba(34, 34, 34, 0.8);
+        background: transparent;
+        cursor: pointer;
+        -webkit-transition: -webkit-text-decoration 0.4s ease-out;
+        transition: -webkit-text-decoration 0.4s ease-out;
+        -o-transition: text-decoration 0.4s ease-out;
+        transition: text-decoration 0.4s ease-out;
+        transition: text-decoration 0.4s ease-out, -webkit-text-decoration 0.4s ease-out;
+    }
+
+    .btn--a:hover {
+        text-decoration: underline;
+    }
+
+    .btn--a.disabled {
+        color: rgba(34, 34, 34, 0.2) !important;
+    }
+    </style>
+    <style>
+        body.payment {
+            overflow-x: hidden;
+        }
+
+        .page-container, .payment__content, .payment__bill-wrapper, .payment__bill {
+            height: 100%;
+        }
+        .page-container {
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            min-height: 100%;
+        }
+
+        .payment [data-field="country"], .payment [data-field="province"] {
+            padding-right: 40px;
+        }
+
+        .payment__logo {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .payment__logo__link {
+            margin-bottom: 5px;
+            -webkit-transition: color 0.2s;
+            -o-transition: color 0.2s;
+            transition: color 0.2s;
+        }
+
+        .payment__logo__link img {
+            height: 55px;
+        }
+
+        .payment__failure h4, .payment__pending h4, .payment__success h4, .payment__cancel h4 {
+            margin-bottom: 10px;
+        }
+
+        .payment__loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            z-index: 3;
+        }
+
+        .payment__loading h3 {
+            text-transform: capitalize;
+            text-align: center;
+            margin-top: 20px;
+            -webkit-animation: breath 1.5s ease-out infinite normal;
+            animation: breath 1.5s ease-out infinite normal;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .payment__breadcrumb .btn {
+            text-transform: capitalize;
+        }
+
+        .payment__breadcrumb .btn--active {
+            color: #321863 !important;
+        }
+
+        .payment__breadcrumb .btn:last-child .icon {
+            display: none;
+        }
+
+        .payment__breadcrumb .btn:hover {
+            text-decoration: none;
+        }
+
+        .payment__breadcrumb .icon-fallback-text {
+            color: rgba(34, 34, 34, 0.8);
+        }
+
+        .payment__bill {
+            position: relative;
+            padding: 40px 0 60px 40px !important;
+        }
+
+        .payment__bill:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 300%;
+            background: #fff4f6;
+            z-index: -1;
+            background-position: left top;
+            -webkit-box-shadow: 1px 0 0 #e6dcdd inset;
+            box-shadow: 1px 0 0 #e6dcdd inset;
+        }
+
+        .payment__bill__content {
+            height: 100%;
+        }
+
+        .payment__bill__products {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .payment__bill__products-list {
+            position: relative;
+            height: 100%;
+            overflow-y: scroll;
+            padding-bottom: 20px;
+        }
+
+        .payment__bill__products-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .payment__bill__products-list::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            background-color: #e6dcdd;
+        }
+
+        .payment__bill__products-list::-webkit-scrollbar-track {
+            border-radius: 4px;
+            background-color: rgba(230, 220, 221, 0.3);
+        }
+
+        .payment__bill__product {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            padding-top: 20px;
+        }
+
+        .payment__bill__product-media {
+            position: relative;
+            padding: 8px 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            max-width: 200px;
+        }
+
+        .payment__bill__product-media:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            border-radius: 8px;
+            border: 1px rgba(34, 34, 34, 0.2) solid;
+            z-index: 2;
+        }
+
+        .payment__bill__product-image {
+            position: relative;
+        }
+
+        .payment__bill__product-image .payment__bill__product-quantity {
+            position: absolute;
+            min-width: 1.75em;
+            height: 1.75em;
+            top: -10px;
+            right: 0;
+            z-index: 3;
+            padding: 0 .5em;
+            font-size: 12px;
+            line-height: 1.7;
+            font-weight: 700;
+            white-space: nowrap;
+            text-align: center;
+            border-radius: 1.75em;
+            background-color: rgba(34, 34, 34, 0.8);
+            color: #fff;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .payment__bill__product-description {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -ms-flex-pack: distribute;
+            justify-content: space-around;
+        }
+
+        .payment__bill__product-price {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .payment__bill__product-price .emphasis {
+            text-align: right;
+        }
+
+        .payment__bill__prices {
+            padding: 10px 0;
+            border-top: 1px solid rgba(34, 34, 34, 0.2);
+        }
+
+        .payment__bill__prices .emphasis {
+            min-width: auto;
+            text-align: right;
+        }
+
+        .payment__bill__prices .title {
+            font-size: 16px;
+            line-height: 1.6;
+            font-weight: 400;
+            color: rgba(34, 34, 34, 0.8);
+        }
+
+        .payment__bill__prices-subtotal {
+            padding-bottom: 10px;
+        }
+
+        .payment__bill__prices-shipping {
+            padding-bottom: 10px;
+        }
+
+        .payment__bill__prices-total {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            position: relative;
+            padding: 10px 0 20px;
+        }
+
+        .payment__bill__prices-total .title {
+            font-size: 18px;
+            line-height: 1.4;
+            font-weight: 700;
+            color: #222222;
+        }
+
+        .payment__bill__prices-total .emphasis {
+            font-size: 22px;
+            line-height: 1.4;
+            font-weight: 700;
+            color: #222222;
+        }
+
+        .payment__bill__prices-total:before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            z-index: 4;
+            -webkit-transition: background-color 0.3s cubic-bezier(0.3, 0, 0, 1);
+            -o-transition: background-color 0.3s cubic-bezier(0.3, 0, 0, 1);
+            transition: background-color 0.3s cubic-bezier(0.3, 0, 0, 1);
+            background-color: rgba(34, 34, 34, 0.2);
+        }
+
+        .payment__content__header {
+            padding-bottom: 30px;
+        }
+
+        .payment__content__header h1 {
+            margin: 0;
+            padding-bottom: 10px;
+        }
+
+        .payment__content__header h1, .payment__content__header .payment__breadcrumb {
+            text-align: center;
+        }
+
+        .payment__content__footer {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .payment__content__footer .btn--back {
+            text-decoration: none;
+        }
+
+        .payment__content__footer .btn--back .btn__text {
+            position: relative;
+            left: -2px;
+        }
+
+        .payment__content__footer .btn--checkout {
+            border-radius: 8px;
+        }
+
+        .payment__security img {
+            float: left;
+            width: 20%;
+        }
+
+        .payment__security__content {
+            float: left;
+            width: 80%;
+            padding-left: 20px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .payment__security__content h3 {
+            margin-bottom: 10px;
+        }
+
+        .payment .page-container {
+            -webkit-transition: all 0.35s cubic-bezier(0.46, 0.01, 0.32, 1);
+            -o-transition: all 0.35s cubic-bezier(0.46, 0.01, 0.32, 1);
+            transition: all 0.35s cubic-bezier(0.46, 0.01, 0.32, 1);
+        }
+
+        .payment__account {
+            padding: 60px 80px 60px 0 !important;
+        }
+
+        .payment__account__content .header {
+            text-transform: capitalize;
+            margin-bottom: 10px;
+            padding: 0 5px;
+            color: #222222;
+        }
+
+        .payment__account__shipping-address {
+            margin-top: 20px;
+        }
+
+        .payment__account__shipping-address .row {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body class="payment">
+    <main class="page-container container payment">
+        <header class="payment__header"></header>
+        <section class="payment__content row">
+            <div class="payment__account col s12 m7">
+                <div class="payment__content__header">
+                    <div class="payment__logo">
+                        <a class="payment__logo__link" href="/">
+                            checkout account
+                        </a>
+                    </div>
+                    <div class="payment__breadcrumb">
+                        <a href="javascript:;" class="btn btn--a">
+                            <span>Cart</span>
+                            <svg class="icon-svg icon-svg--size12" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 16a.999.999 0 01-.707-1.707L11.586 10 7.293 5.707a.999.999 0 111.414-1.414l5 5a.999.999 0 010 1.414l-5 5A.997.997 0 018 16z" />
+                            </svg>
+                        </a>
+                        <a href="javascript:;" class="btn btn--a btn--active">
+                            <span>Information</span>
+                            <svg class="icon-svg icon-svg--size12" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 16a.999.999 0 01-.707-1.707L11.586 10 7.293 5.707a.999.999 0 111.414-1.414l5 5a.999.999 0 010 1.414l-5 5A.997.997 0 018 16z" />
+                            </svg>
+                        </a>
+                        <a href="javascript:;" class="btn btn--a disabled">
+                            <span>Shipping</span>
+                            <svg class="icon-svg icon-svg--size12" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 16a.999.999 0 01-.707-1.707L11.586 10 7.293 5.707a.999.999 0 111.414-1.414l5 5a.999.999 0 010 1.414l-5 5A.997.997 0 018 16z" />
+                            </svg>
+                        </a>
+                        <a href="javascript:;" class="btn btn--a disabled">
+                            <span>Payment</span>
+                            <svg class="icon-svg icon-svg--size12" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 16a.999.999 0 01-.707-1.707L11.586 10 7.293 5.707a.999.999 0 111.414-1.414l5 5a.999.999 0 010 1.414l-5 5A.997.997 0 018 16z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <v-payment-account v-cloak ref="paymentAccountInfo"></v-payment-account>
+
+                <div class="payment__content__footer">
+                    <button type="button" id="Back--payment-account" class="btn btn--text btn--back">
+                        <svg class="icon-svg icon-svg--size16" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 16a.997.997 0 01-.707-.293l-5-5a.999.999 0 010-1.414l5-5a.999.999 0 111.414 1.414L8.414 10l4.293 4.293A.999.999 0 0112 16z" />
+                        </svg>
+                        <span class="btn__text">Return to cart</span>
+                    </button>
+                    <button type="button" id="Checkout--payment-account" class="btn btn--secondary btn--checkout" @click="accountSubmitHandler" :disabled="CheckoutPaymentAccountActive">
+                        <span class="btn__text" v-if="!CheckoutPaymentAccountActive">Continue to shipping</span>
+                    </button>
+                </div>
+
+            </div>
+            <div class="payment__bill-wrapper col s12 m5">
+                <v-payment-bill v-cloak></v-payment-bill>
+            </div>
+        </section>
+        <footer class="payment__footer"></footer>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/zepto@1.2.0/dist/zepto.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+    <script src="./checkout-countries.new.js"></script>
+
+    <script type="text/x-template" id="v-payment-account-tpl">
+        <div class="payment__account__content" v-if="addressFormatActive">
+            <div class="payment__account__contact-info">
+                <h3 class="header">Contact Information</h3>
+                <div class="row">
+                    <div :class="['field', form['email'] ? 'field--label-floated' : '']">
+                        <div class="field__input-wrapper">
+                            <label class="field__label" :for="`payment_account_form_email`">{{ LABELS.email }}</label>
+                            <input :id="`payment_account_form_email`"
+                                class="field__input"
+                                size="30"
+                                type="text"
+                                v-model="form['email']" 
+                                :placeholder="PLACEHOLDER.email"
+                                data-field="email"
+                                @blur="inputBlurHandler($event, 'email')"
+                                @input="inputChangeHandler($event, 'email')"
+                            />
+                        </div>
+                        <div class="field__message field__message--error"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="payment__account__shipping-address">
+                <h3 class="header">Shipping Address</h3>
+                <template v-for="(value, key, idx) in addressFormatActive">
+                    <div class="row" :key="`${key}-${idx}`">
+                        <template v-for="(item) in value">
+                            <!-- 国家、省份根据数据结构单独提出来写，根据国家变化重新布局和填充数据 -->
+                            <!-- 会根据国家动态变化的俩个表单项 province zipcode, zipcode 写在下面的input中 -->
+                            <template v-if="item === 'country'">
+                                <div class="field field--label-floated">
+                                    <div class="field__input-wrapper">
+                                        <label class="field__label" :for="`payment_account_form_${item}`">{{ LABELS[item] }}</label>
+                                        <select :key="`${key}-${idx}-${item}`"
+                                                :id="`payment_account_form_${item}`"
+                                                class="field__input"
+                                                v-model="form.country"
+                                                :data-field="item"
+                                                @change="countryChangeHandler">
+                                            <template v-for="(countryOption) in countryOptions">
+                                                <option :value="countryOption.name" :data-code="countryOption.code" :selected="form.country === countryOption.name">{{ countryOption.name }}</option>
+                                            </template>
+                                        </select>
+                                        <div class="field__arrow-down">
+                                            <svg class="icon-svg" style="color:rgba(34,34,34,.6);" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 8l5 5 5-5H5z" /></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                            <template v-else-if="item === 'province'">
+                                <div class="field field--label-floated">
+                                    <div class="field__input-wrapper">
+                                        <label class="field__label" :for="`payment_account_form_${item}`">{{ LABELS[item] }}</label>
+                                        <select :key="`${key}-${idx}-${item}`"
+                                                :id="`payment_account_form_${item}`"
+                                                class="field__input"
+                                                v-model="form.province"
+                                                :data-field="item">
+                                            <template v-for="(provinceOption) in provinceOptions">
+                                                <option :value="provinceOption.name" :data-code="provinceOption.code" :selected="form.province === provinceOption.name">{{ provinceOption.name }}</option>
+                                            </template>
+                                        </select>
+                                        <div class="field__arrow-down">
+                                            <svg class="icon-svg" style="color:rgba(34,34,34,.6);" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 8l5 5 5-5H5z" /></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                            <template v-else-if="item === 'phone'">
+                                <div :class="['field', form[item] ? 'field--label-floated' : '']">
+                                    <div class="field__input-wrapper">
+                                        <label class="field__label" :for="`payment_account_form_${item}`">{{ LABELS[item] }}</label>
+                                        <input :key="`${key}-${idx}-${item}`"
+                                            :id="`payment_account_form_${item}`"
+                                            class="field__input"
+                                            size="30"
+                                            type="text"
+                                            v-model="form[item]" 
+                                            :placeholder="PLACEHOLDER[item]"
+                                            :data-field="item" 
+                                            @blur="inputBlurHandler($event, item)"
+                                            @input="inputChangeHandler($event, item)" 
+                                        />
+                                        <div class="field__input__extract field__input__extract--right"></div>
+                                    </div>
+                                    <div class="field__message field__message--error"></div>
+                                </div>
+                            </template>
+                            <template v-else>
+                                <div :class="['field', form[item] ? 'field--label-floated' : '']">
+                                    <div class="field__input-wrapper">
+                                        <label class="field__label" :for="`payment_account_form_${item}`">{{ LABELS[item] }}</label>
+                                        <input :key="`${key}-${idx}-${item}`"
+                                            :id="`payment_account_form_${item}`"
+                                            class="field__input"
+                                            v-model="form[item]" 
+                                            size="30"
+                                            type="text"
+                                            :placeholder="PLACEHOLDER[item]"
+                                            :data-field="item" 
+                                            @blur="inputBlurHandler($event, item)"
+                                            @input="inputChangeHandler($event, item)" 
+                                        />
+                                    </div>
+                                    <div class="field__message field__message--error"></div>
+                                </div>
+                            </template>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </script>
+    <script type="text/x-template" id="v-payment-bill-tpl">
+        <aside class="payment__bill">
+            <header class="payment__bill__header"></header>
+            <div class="payment__bill__content">
+                <div class="payment__bill__detail">
+                    <section class="payment__bill__products" :style="bill.orderItems.length <= 2 ? 'max-height: 260px': 'height: 260px'">
+                        <h3 class="payment__bill__products-header"></h3>
+                        <div class="payment__bill__products-list" v-if="bill.orderItems">
+                            <template v-for="(item, idx) in bill.orderItems">
+                                <div class="payment__bill__product row">
+                                    <div class="payment__bill__product-image col s3">
+                                        <div class="payment__bill__product-media">
+                                            <img class="product__image" :src="item.image" :alt="item.attrs" />
+                                        </div>
+                                        <span class="payment__bill__product-quantity">{{ item.quantity }}</span>
+                                    </div>
+                                    <div class="payment__bill__product-description col s6">
+                                        <span class="emphasis">{{ item.name }}</span>
+                                        <span class="small-text">{{ item.attrs | skuFormat }}</span>
+                                    </div>
+                                    <div class="payment__bill__product-price col s3">
+                                        <span class="emphasis">$ {{ item.totalPrice }}</span>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </section>
+                    <section class="payment__bill__prices">
+                        <div class="payment__bill__prices-header"></div>
+                        <div class="payment__bill__prices-subtotal row">
+                            <span class="title col s6">Subtotal</span>
+                            <span class="emphasis col s6">$ {{ bill.subTotalPrice }}</span>
+                        </div>
+                        <div class="payment__bill__prices-shipping row">
+                            <span class="title col s6">Shipping</span>
+                            <span class="emphasis col s6">$ {{ shippingPrice }}</span>
+                        </div>
+                        <div class="payment__bill__prices-total row">
+                            <span class="title col s6">Total</span>
+                            <span class="emphasis col s6">$ {{ totalPrice }}</span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </aside>
+    </script>
+
+    <script>
+        window.addEventListener('load', () => {
+            
+            // 初始化用户信息，一般通过 接口/模版变量 获取，这里写死仅做示例
+            const AddressInfo = {
+                address1: null,
+                address2: null,
+                city: null,
+                company: null,
+                country: null,
+                countryName: null,
+                email: null,
+                firstName: null,
+                lastName: null,
+                phone: null,
+                province: null,
+                provinceName: null,
+                zip: null
+            }
+            const BillData = {
+                "subTotalPrice": "452.79",
+                "shippingPrice": "-1.00",
+                "totalPrice": "452.79",
+                "currency": "USD",
+                "orderItems": [{
+                    "name": "Autumn and Winter Knitted Turtleneck Sweater and Elastic Pants Ladies Casual Suit",
+                    "attrs": "ivory / S",
+                    "image": "https://cdn.shopify.com/s/files/1/0267/3193/7866/products/06d338cc2d389977a24977e79540c143_590x.png?v=1607940170",
+                    "spu": "XWXWU0097",
+                    "productId": 1354331429122252800,
+                    "sku": "XWXWU0097-ivory-S",
+                    "variantId": 1354331445823971300,
+                    "price": "43.99",
+                    "totalPrice": "43.99",
+                    "quantity": 1
+                }]
+            }
+
+            /**
+             * countryName, provinceName 为名称
+             * country, province 为code
+             */
+            const countryList = ADDRESS_COUNTRIES
+            const currentCountryName = Object.keys(ADDRESS_COUNTRIES)[0]
+
+            const PLACEHOLDER = {
+                'email': 'Email',
+                'firstName': 'First name',
+                'lastName': 'Last name',
+                'address1': 'Address',
+                'address2': 'Apartment, suite, etc. (optional)',
+                'city': 'City',
+                'zip': 'Postal code',
+                'phone': 'Phone'
+            }
+
+            const LABELS = {
+                'email': 'Email',
+                'firstName': 'First name',
+                'lastName': 'Last name',
+                'address1': 'Address',
+                'address2': 'Apartment, suite, etc. (optional)',
+                'city': 'City',
+                'country': 'Country/Region',
+                'province': 'State',
+                'zip': 'Postal code',
+                'phone': 'Phone'
+            }
+
+            const NoValidateItems = ['address2', 'country', 'province']
+
+            const ERRORTIPS = {
+                'email': {
+                    'empty': 'Enter a email',
+                    'error': 'Enter a valid email'
+                },
+                'firstName': {
+                    'empty': 'Enter a first name',
+                    'error': 'First Name should be 1-40 characters'
+                },
+                'lastName': {
+                    'empty': 'Enter a last name',
+                    'error': 'Last Name should be 1-40 characters'
+                },
+                'address1': {
+                    'empty': 'Enter an address',
+                    'error': 'Full address should be 5-100 characters'
+                },
+                // 'address2': null,
+                'city': {
+                    'empty': 'Enter a City',
+                    'error': 'City should be 2-60 characters'
+                },
+                // 'country': null,
+                // 'province': null,
+                'zip': {
+                    'empty': 'Enter a ZIP / postal code',
+                    'error': 'ZIP / postal code should be 2-30 characters'
+                },
+                'phone': {
+                    'empty': 'Enter a phone number',
+                    'error': null
+                }
+            }
+
+            const vPaymentAccount = Vue.component('v-payment-account', {
+                template: '#v-payment-account-tpl',
+                props: {},
+                directives: {},
+                filters: {},
+                computed: {},
+                watch: {},
+                data: () => ({
+                    PLACEHOLDER,
+                    LABELS,
+                    addressFormatActive: null,
+                    countryOptions: [],
+                    provinceOptions: [],
+                    // prevForm 保存上一次 form 数据，保证国家切换时重新刷新布局能将数据写回去
+                    prevForm: {},
+                    // form 保存当前的 form 数据
+                    form: {},
+                    CheckoutPaymentAccountActive: false
+                }),
+                created () {},
+                mounted () {
+                    this.initAccount()
+                },
+                methods: {
+                    initAccount () {
+                        // ADDRESS_FORMAT countryList
+                        this.initAccountFromLayout()
+                        this.initAccountCountryOptions()
+                        this.initAccountProvinceOptions()
+                        this.initAccountVueData()
+                    },
+                    initAccountFromLayout () {
+                        // 暂时按照 无用户信息 取第一个国家来做 省份需要和国家联动，国家确定后才能确定省份，必须默认一个国家，或者布局使用无省份的布局：nn_a_a_c_cz_p
+                        const activeCountry = this.prevForm.country || currentCountryName || Object.keys(countryList)[0]
+                        // 初始化的时候为了让country select 有默认selected 所以必须有这一步
+                        if (activeCountry) this.prevForm.country = activeCountry
+                        const addressFormatActiveKey = countryList[activeCountry].address_format
+                        this.addressFormatActive = ADDRESS_FORMAT[addressFormatActiveKey]
+                        },
+                        initAccountCountryOptions () {
+                        Object.keys(countryList).map(countryName => {
+                            const counrtyInfo = countryList[countryName]
+                            this.countryOptions.push({ name: countryName, code: counrtyInfo.code })
+                        })
+                    },
+                    initAccountProvinceOptions () {
+                        const activeCountry = this.prevForm.country
+                        if (countryList[activeCountry].provinces.length) {
+                            this.provinceOptions = countryList[activeCountry].provinces
+                        }
+                    },
+                    initAccountVueData () {
+                        /**
+                         * 1. 无用户地址信息，country为空，根据 addressformat 中的信息创建 vue data
+                         * 2. 有用户地址信息，country有值
+                         * tip：
+                         * 1. 用户信息的data属性名与匹配的 addressformat 中的值一致
+                         * 2. 赋值时先取 prevform 中的数据，保持数据状态，country在上面已经手动赋值过，因为国家是变化的入口，所以在上面赋值；
+                         * 省份的变化需要注意从一个无省份的国家跳到有省份，需要给默认值
+                         */
+                        this.addressFormatActive.map(addressFormat => {
+                            addressFormat.map(item => {
+                            if (item === 'province') {
+                                if (!this.prevForm[item]) {
+                                // 从没有省市的国家切到有省市的国家，这里无值
+                                if (AddressInfo.provinceName) {
+                                    // 先判断当前AddressInfo中的provinceName
+                                    // 有值的话需要先看切换后的国家有没有这个省份，没有就选第一个
+                                    const innerProvinceInfo = this.provinceOptions.find(province => province.name === AddressInfo.provinceName)
+                                    this.form[item] = innerProvinceInfo ? innerProvinceInfo.name : this.provinceOptions[0].name
+                                } else {
+                                    this.form[item] = this.provinceOptions[0].name
+                                }
+                                } else {
+                                this.form[item] = this.provinceOptions[0].name
+                                }
+                            } else {
+                                this.form[item] = this.prevForm[item] || AddressInfo[item] || null
+                            }
+                            })
+                        })
+                        // 手动添加email
+                        this.form['email'] = this.prevForm['email'] || AddressInfo['email'] || null
+                    },
+                    countryChangeHandler () {
+                        // 切换国家需要重新布局
+                        this.prevForm = JSON.parse(JSON.stringify(this.form))
+                        // 切换国家需要重新填充数据
+                        this.countryOptions = []
+                        this.provinceOptions = []
+                        this.initAccount()
+                    },
+                    inputBlurHandler (event, key) {
+                        const el = event.target || event
+                        // label 动画切换
+                        if (this.form[key]) {
+                            $(el).parents('.field').addClass('field--label-floated')
+                        } else {
+                            $(el).parents('.field').removeClass('field--label-floated')
+                        }
+                        // 校验
+                        this.validate(el, key)
+                    },
+                    inputChangeHandler (event, key) {
+                        const el = event.target || event
+                        // label 动画切换
+                        // input是在v-model更新后触发，拿到初次修改时机进行动画切换
+                        if (!this.prevForm[key] && this.form[key]) {
+                            $(el).parents('.field').addClass('field--label-floated')
+                        }
+                        // 清空input
+                        if (!this.form[key]) {
+                            $(el).parents('.field').removeClass('field--label-floated')
+                        }
+                        // 为了初次修改时机进行动画切换所以必须赋值，避免此次都执行动画
+                        this.prevForm[key] = this.form[key]
+                    },
+                    validate (el, key) {
+                        // 放过不用校验的表单项
+                        if (NoValidateItems.includes(key)) return true
+                        // 校验
+                        const { noError, message } = this.validateStrategies(key)
+                        if (noError) {
+                            $(el).parents('.field').find('.field__message--error').text('')
+                            $(el).parents('.field').removeClass('field--error')
+                            return true
+                        } else {
+                            $(el).parents('.field').find('.field__message--error').text(message)
+                            $(el).parents('.field').addClass('field--error')
+                            return false
+                        }
+                    },
+                    validateStrategies (key) {
+                        const inputVal = $.trim(this.form[key])
+
+                        // 判空 对应ERRORTIPS的empty
+                        const noEmpty = (val) => {
+                            if (val) {
+                            return {
+                                status: true,
+                                tip: ''
+                            }
+                            } else {
+                            return {
+                                status: false,
+                                tip: ERRORTIPS[key].empty
+                            }
+                            }
+                        }
+
+                        // 判断值 对应ERRORTIPS的error
+                        const email_rule = (val) => {
+                            if (/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(val)) {
+                            return {
+                                status: true,
+                                tip: ''
+                            }
+                            } else {
+                            return {
+                                status: false,
+                                tip: ERRORTIPS[key].error
+                            }
+                            }
+                        }
+                        const firstName_rule = (val) => {
+                            if (val.length >= 1 && val.length <= 40) {
+                            return {
+                                status: true,
+                                tip: ''
+                            }
+                            } else {
+                            return {
+                                status: false,
+                                tip: ERRORTIPS[key].error
+                            }
+                            }
+                        }
+
+                        const lastName_rule = (val) => {
+                            if (val.length >= 1 && val.length <= 40) {
+                            return {
+                                status: true,
+                                tip: ''
+                            }
+                            } else {
+                            return {
+                                status: false,
+                                tip: ERRORTIPS[key].error
+                            }
+                            }
+                        }
+
+                        const address1_rule = (val) => {
+                            if (val.length >= 5 && val.length <= 100) {
+                            return {
+                                status: true,
+                                tip: ''
+                            }
+                            } else {
+                            return {
+                                status: false,
+                                tip: ERRORTIPS[key].error
+                            }
+                            }
+                        }
+
+                        const city_rule = (val) => {
+                            if (val.length >= 2 && val.length <= 60) {
+                            return {
+                                status: true,
+                                tip: ''
+                            }
+                            } else {
+                            return {
+                                status: false,
+                                tip: ERRORTIPS[key].error
+                            }
+                            }
+                        }
+
+                        const zip_rule = (val) => {
+                            if (val.length >= 2 && val.length <= 30) {
+                            return {
+                                status: true,
+                                tip: ''
+                            }
+                            } else {
+                            return {
+                                status: false,
+                                tip: ERRORTIPS[key].error
+                            }
+                            }
+                        }
+
+                        const phone_rule = (val) => ({ status: true, tip: '' })
+
+                        const noErrorRules = {
+                            'email': email_rule,
+                            'firstName': firstName_rule,
+                            'lastName': lastName_rule,
+                            'address1': address1_rule,
+                            'city': city_rule,
+                            'zip': zip_rule,
+                            'phone': phone_rule
+                        }
+
+                        const noError = noErrorRules[key]
+
+                        const { status: noEmptyStatus, tip: noEmptyMessage } = noEmpty(inputVal)
+                        const { status: noErrorStatus, tip: noErrorMessage } = noError(inputVal)
+                        if (noEmptyStatus && noErrorStatus) {
+                            return {
+                            noError: true,
+                            message: ''
+                            }
+                        }
+                        if (!noEmptyStatus && noErrorStatus) {
+                            return {
+                            noError: false,
+                            message: noEmptyMessage
+                            }
+                        }
+                        if (noEmptyStatus && !noErrorStatus) {
+                            return {
+                            noError: false,
+                            message: noErrorMessage
+                            }
+                        }
+                        if (!noEmptyStatus && !noErrorStatus) {
+                            return {
+                            noError: false,
+                            message: noEmptyMessage
+                            }
+                        }
+                    }
+                }
+            })
+
+            const vPaymentBill = Vue.component('v-payment-bill', {
+                template: '#v-payment-bill-tpl',
+                props: {},
+                directives: {},
+                filters: {
+                    skuFormat (val) {
+                        return val.replace('-', ' / ')
+                    }
+                },
+                computed: {},
+                watch: {},
+                data: () => ({
+                    bill: BillData,
+                    shippingPrice: BillData.shippingPrice,
+                    totalPrice: BillData.totalPrice
+                }),
+                created () {},
+                mounted () {},
+                methods: {
+                    updatePrices ({ shippingPrice, totalPrice }) {
+                        this.shippingPrice = shippingPrice
+                        this.totalPrice = totalPrice
+                    }
+                }
+            })
+
+
+            new Vue({
+                el: 'main.page-container',
+                name: 'PaymentAccount',
+                components: { vPaymentAccount, vPaymentBill },
+                directives: {},
+                filters: {},
+                props: {},
+                computed: {},
+                watch: {},
+                data: () => ({
+                    mobile: {
+                        paymentBillActive: false
+                    },
+                    CheckoutPaymentAccountActive: false
+                }),
+                created () {},
+                mounted () {},
+                methods: {
+                    accountSubmitHandler () {
+                        const { addressFormatActive, form, validate } = this.$refs.paymentAccountInfo
+                        // 拿到当前布局的扁平化数据
+                        let addressFormat = addressFormatActive
+                        while (addressFormat.some(Array.isArray)) {
+                            addressFormat = [].concat(...addressFormat)
+                        }
+                        // 手动加上email
+                        addressFormat.push('email')
+                        // form 有值就+1 根据表单项填写的数量与总表单项个数比较判断是否提交请求
+                        let filledFormItemNum = 0
+                        const formItemTotal = addressFormat.length
+                        // 根据当前布局检索用户填写的数据
+                        addressFormat.map(key => {
+                            const el = document.querySelector(`#payment_account_form_${key}`)
+                            // 校验
+                            if (validate(el, key)) {
+                                filledFormItemNum++
+                            }
+                        })
+                        if (filledFormItemNum === formItemTotal) {
+                            this.CheckoutPaymentAccountActive = true
+                            const formData = {}
+                            Object.keys(form).map(key => {
+                                if (key === 'country') {
+                                formData['country'] = ADDRESS_COUNTRIES[form['country']].code
+                                formData['countryName'] = form['country']
+                                } else if (key === 'province') {
+                                const target = ADDRESS_COUNTRIES[form['country']].provinces
+                                if (target.length) {
+                                    const { name, code } = target.find(p => p.name === form['province'])
+                                    formData['province'] = code
+                                    formData['provinceName'] = name
+                                } else {
+                                    formData['province'] = ''
+                                    formData['provinceName'] = ''
+                                }
+                                } else {
+                                formData[key] = form[key]
+                                }
+                            })
+                            submitAccount(`/checkout/${CartNo}/address.json`, JSON.stringify(formData)).then(({ code, data }) => {
+                                if (code === 200 && data) {
+                                    window.location.href = data.route
+                                    // this.CheckoutPaymentAccountActive = false
+                                }
+                            })
+                        } else {
+                            // 表单项填写的数量小于总表单项个数，信息填写不全
+                            return false
+                        }
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+</html>
