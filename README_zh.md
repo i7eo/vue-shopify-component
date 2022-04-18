@@ -15,12 +15,15 @@
 ### 使用技术
 zepto & vue2.6
 
-### 2021.02.19 更新
+### Shopify Address Component
 shopify地址页面，国家数据来源于 shopify。主要用vue重写了地址联动
 
 难点：
 1. 以国家切换为入口，刷新整体的 ui。这里需要提前定义好 ui 布局，详情参见 checkout/checkout-countries.new.js 中的 ADDRESS_FORMAT 对象
 2. 表单项的 label 的上浮动画需要加上 `transform: translateY(2px);`
+
+### Shopify Product Options Select Component
+本组件灵感来源于 [sku 多维属性状态判断算法](https://keelii.com/2016/12/22/sku-multi-dimensional-attributes-state-algorithm/) 建议先掌握这个篇文章中的所有知识点否则阅读代码会比较吃力
 
 ## :stuck_out_tongue_winking_eye: 关于作者
 
